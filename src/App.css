@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+body {
+  background-color: #9475A2;
+}
+
+#root {
+  display: grid;
+  align-items: center;
+}
+
+.sign {
+  background: no-repeat
+    center/600px
+    url(./assets/atm_sign.png),
+    #126CAE;
+}
+
+.card-indicator {
+  background: no-repeat url(./assets/creditcard_sprite.png);
+}
