@@ -3,11 +3,16 @@ import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
+import prettierConfig from 'eslint-config-prettier'
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  { ignores: ['dist'] },  // 'ignores' is a cascading option. placing it here will apply to all following config objects.
   {
-    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    extends: [
+      js.configs.recommended,
+      ...tseslint.configs.recommended,
+      prettierConfig,
+    ],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,

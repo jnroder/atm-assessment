@@ -7,7 +7,7 @@ function App() {
     <div className="inline-block mt-47 mx-auto w-full max-w-[856px]">
       <Sign />
       <div className="facade">
-        <CardIndicator cardType="" />
+        <CardIndicator />
       </div>
     </div>
   )

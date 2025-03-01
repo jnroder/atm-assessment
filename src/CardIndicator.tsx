@@ -11,7 +11,7 @@ const CardIndicator = () => {
 
   return (
     <div className="card-indicator">
-        <img src={CreditCardSprite} alt="Credit Card Type Indicator" />
+      <img src={CreditCardSprite} alt="Credit Card Type Indicator" />
     </div>
   )
 }
