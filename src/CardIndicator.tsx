@@ -1,5 +1,7 @@
 import CreditCardSprite from './assets/creditcard_sprite.png'
 
+// TODO: Implement cardType prop that changes show sprite image
+
 /*
 interface Props {
   cardType: string;
