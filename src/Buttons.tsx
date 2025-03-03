@@ -1,8 +1,11 @@
 import { Link } from 'react-router'
 
+// TODO: Add button styles
+
 interface NavItem {
   text: string
   path: string
+  onClick?: () => void
 }
 
 interface ButtonsProps {
@@ -14,7 +17,7 @@ const Buttons = ({ navItems }: ButtonsProps) => {
     <>
       <nav className="buttons">
         {navItems.map((navItem, index) => (
-          <Link key={index} to={navItem.path}>
+          <Link key={index} to={navItem.path} onClick={navItem.onClick}>
             {navItem.text}
           </Link>
         ))}

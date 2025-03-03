@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useLayoutContext } from '../App'
 
 // TODO: Implement Pin submission handler
@@ -8,25 +8,36 @@ import { useLayoutContext } from '../App'
 //    +input validation
 
 const Pin = () => {
+  const [pin, setPin] = useState('')
   const { setNavItems } = useLayoutContext()
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value)
+    setPin(e.target.value)
+  }
 
   useEffect(() => {
     setNavItems([
-      { text: 'Submit Pin', path: '/pin' },
+      {
+        text: 'Submit Pin',
+        path: `/dashboard/${pin}`,
+      },
       { text: 'Back', path: '/' },
     ])
-  }, [setNavItems])
+  }, [setNavItems, pin])
 
   return (
-    <form>
+    <>
       <label htmlFor="pin">Enter your pin</label>
       <input
         name="pin"
         type="password"
         className="w-30 bg-white border-gray-300 border-6 p-2 text-3xl center"
         maxLength={4}
+        value={pin}
+        onChange={handleInputChange}
       />
-    </form>
+    </>
   )
 }
 

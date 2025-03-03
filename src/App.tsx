@@ -1,24 +1,26 @@
-import { useState } from 'react'
+import { StrictMode, useState } from 'react'
 import {
-  BrowserRouter,
-  Routes,
+  RouterProvider,
   Route,
   Outlet,
   useOutletContext,
+  createBrowserRouter,
+  createRoutesFromElements,
 } from 'react-router'
 import Sign from './Sign'
 import CardIndicator from './CardIndicator'
 import Buttons from './Buttons'
 import Welcome from './pages/Welcome'
 import Pin from './pages/Pin'
+import UserDashboard, { loader as userLoader } from './pages/UserDashboard'
 import './App.css'
 
-type NavItem = {
+interface NavItem {
   text: string
   path: string
+  onClick?: (args?: unknown) => void // allow onClick handler to accept any arguments
 }
-
-export type LayoutContextType = {
+export interface LayoutContextType {
   navItems: NavItem[]
   setNavItems: (navItems: NavItem[]) => void
 }
@@ -33,6 +35,7 @@ function Layout() {
       <Sign />
       <div className="facade">
         <CardIndicator />
+        {/* pass button state setter to children. get with useLayoutContext */}
         <Outlet context={{ navItems, setNavItems }} />
         <Buttons navItems={navItems} />
       </div>
@@ -40,21 +43,30 @@ function Layout() {
   )
 }
 
+// this exposes context passed in Outlet component props to child components
 export function useLayoutContext() {
   return useOutletContext<LayoutContextType>()
 }
 
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Welcome />} />
+      <Route path="/pin" element={<Pin />} />
+      <Route
+        path="/dashboard/:pin" // use a route parameter to pass pin to loader. get with useLocation
+        element={<UserDashboard />}
+        loader={userLoader}
+      />
+    </Route>
+  )
+)
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Welcome />} />
-          <Route path="/pin" element={<Pin />} />
-          <Route path="/dashboard" element={<div>User Dashboard</div>} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>
   )
 }
 
