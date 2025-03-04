@@ -1,19 +1,18 @@
-import CreditCardSprite from './assets/creditcard_sprite.png'
-
-// TODO: Implement cardType prop that changes show sprite image
-
-/*
-interface Props {
-  cardType: string;
+interface CardIndicatorProps {
+  cardType: string | undefined
 }
-*/
 
-const CardIndicator = () => {
-  //const cardTypes = ['star', 'pulse', 'maestro', 'mastercard', 'plus', 'visa']
+const CardIndicator = ({ cardType }: CardIndicatorProps) => {
+  {
+    /* Uses CSS to manipulate the sprite image to show the active card type */
+  }
+  const activeClassName = `active-card-indicator ${
+    cardType || 'hidden'
+  } relative`
 
   return (
-    <div className="card-indicator">
-      <img src={CreditCardSprite} alt="Credit Card Type Indicator" />
+    <div className="card-indicator w-[470px] h-[50px] mx-auto mt-2">
+      <div className={activeClassName}></div>
     </div>
   )
 }

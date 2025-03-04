@@ -6,6 +6,12 @@ export default [
         "cardType": "star"
     },
     {
+        "pin": "0427",
+        "name": "Peter Parker",
+        "balance": 1962,
+        "cardType": "star"
+    },
+    {
         "pin": "1123",
         "name": "Leonardo Pisano Bigollo",
         "balance": 1170,

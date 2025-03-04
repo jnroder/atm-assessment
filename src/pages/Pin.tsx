@@ -12,32 +12,31 @@ const Pin = () => {
   const { setNavItems } = useLayoutContext()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value)
     setPin(e.target.value)
   }
 
   useEffect(() => {
     setNavItems([
+      { text: 'Back', path: '/' },
       {
         text: 'Submit Pin',
         path: `/dashboard/${pin}`,
       },
-      { text: 'Back', path: '/' },
     ])
   }, [setNavItems, pin])
 
   return (
-    <>
+    <div className="mt-30 text-xl">
       <label htmlFor="pin">Enter your pin</label>
       <input
         name="pin"
         type="password"
-        className="w-31 bg-white border-gray-300 border-6 p-2 text-2xl text-black center"
+        className="block w-31 mx-auto mt-4 bg-white border-gray-300 border-6 p-2 text-2xl text-black center"
         maxLength={4}
         value={pin}
         onChange={handleInputChange}
       />
-    </>
+    </div>
   )
 }
 

@@ -28,17 +28,17 @@ const UserDashboard = () => {
 
   useEffect(() => {
     setNavItems([
-      { text: 'Re-Enter Pin', path: '/pin' },
-      { text: 'Deposit', path: '/deposit' },
-      { text: 'Balance', path: '/balance' },
-      { text: 'Withdraw', path: '/withdraw' },
       { text: 'Exit', path: '/' },
+      { text: 'Withdraw', path: '/withdraw' },
+      { text: 'Balance', path: '/balance' },
+      { text: 'Deposit', path: '/deposit' },
+      { text: 'Re-Enter PIN', path: '/pin' },
     ])
   }, [setNavItems])
   return (
     <>
-      <p>{`Hi ${user.name}!`}</p>
-      <p>Please make a choice...</p>
+      <p className="mt-23 text-xl">{`Hi ${user.name}!`}</p>
+      <p className="text-xl">Please make a choice...</p>
     </>
   )
 }

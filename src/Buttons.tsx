@@ -1,4 +1,4 @@
-import { Link } from 'react-router'
+import Button from './Button'
 
 // TODO: Add button styles
 
@@ -13,18 +13,13 @@ interface ButtonsProps {
 }
 
 const Buttons = ({ navItems }: ButtonsProps) => {
+  const allButtons = [Array(8 - navItems.length).fill(null), ...navItems].flat()
+
   return (
     <>
-      <nav className="buttons">
-        {navItems.map((navItem, index) => (
-          <div className="button flex items-center py-2" key={index}>
-            <Link
-              to={navItem.path}
-              onClick={navItem.onClick}
-              className="flex relative bg-[#C1C1C1] w-20 h-10 border-top-[#D9D9D4] rounded"
-            />
-            <span>{navItem.text}</span>
-          </div>
+      <nav className="buttons absolute bottom-[24px] w-full px-7 flex flex-reverse flex-wrap-reverse">
+        {allButtons.map((navItem, index) => (
+          <Button key={index} navItem={navItem} />
         ))}
       </nav>
     </>

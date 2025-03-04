@@ -25,31 +25,69 @@ body {
 }
 
 .card-indicator {
+  background: no-repeat center url(./assets/creditcard_sprite.png);
+  background-size: cover;
+  background-position-y: -40px;
+}
+
+.active-card-indicator {
   background: no-repeat url(./assets/creditcard_sprite.png);
+  background-size: auto 83px;
+  background-position-y: 5px;
+  height: 100%;
 }
 
-.button a:before {
-  content: ' ';
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 10px;
-  top: -4px;
-  left: 0;
-  background: #D9D9D4;
-  border-radius: 1em;
-  z-index: -1;
+.active-card-indicator.star {
+  width: 60px;
 }
 
-.button a:after {
-  content: ' ';
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 10px;
-  bottom: -5px;
-  left: 0;
-  background: #9B9B9B;
-  border-radius: 1em;
-  z-index: -1;
+.active-card-indicator.pulse {
+  width: 83px;
+  left: 79px;
+  background-position-x: -76px;
+}
+
+.active-card-indicator.maestro {
+  width: 60px;
+  left: 184px;
+  background-position-x: -182px;
+}
+
+.active-card-indicator.mastercard {
+  width: 60px;
+  left: 258px;
+  background-position-x: -258px;
+}
+
+.active-card-indicator.plus {
+  width: 60px;
+  left: 336px;
+  background-position-x: -336px;
+}
+
+.active-card-indicator.visa {
+  width: 60px;
+  left: 414px;
+  background-position-x: -414px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-row-gap: 12px;
+}
+
+.button a {
+  box-shadow: #9B9B9B 0 4px,
+    #D9D9D4 0 -4px;
+}
+
+.button a:active {
+  box-shadow: inset #9B9B9B 0 4px,
+    inset #9B9B9B 0 -1px;
+}
+
+.button:nth-child(2n) {
+  flex-direction: row-reverse;
 }

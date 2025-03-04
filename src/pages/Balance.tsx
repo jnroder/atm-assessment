@@ -11,7 +11,7 @@ const Balance = () => {
     ])
   }, [setNavItems, userData])
 
-  return <div>`Balance: ${userData?.balance}`</div>
+  return <div className="mt-40 text-xl">{`Balance: $${userData?.balance}`}</div>
 }
 
 export default Balance
