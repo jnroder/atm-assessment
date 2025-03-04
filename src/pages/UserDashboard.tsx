@@ -19,13 +19,17 @@ export async function loader({ params }: UserLoaderFunctionArgs) {
 }
 
 const UserDashboard = () => {
-  const { setNavItems } = useLayoutContext()
+  const { setNavItems, setUserData } = useLayoutContext()
   const { user } = useLoaderData()
+
+  useEffect(() => {
+    setUserData(user)
+  }, [setUserData, user])
 
   useEffect(() => {
     setNavItems([
       { text: 'Re-Enter Pin', path: '/pin' },
-      { text: 'Deposit', path: '/despost' },
+      { text: 'Deposit', path: '/deposit' },
       { text: 'Balance', path: '/balance' },
       { text: 'Withdraw', path: '/withdraw' },
       { text: 'Exit', path: '/' },
