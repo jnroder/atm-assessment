@@ -32,7 +32,7 @@ const Pin = () => {
       <input
         name="pin"
         type="password"
-        className="w-30 bg-white border-gray-300 border-6 p-2 text-3xl center"
+        className="w-31 bg-white border-gray-300 border-6 p-2 text-2xl text-black center"
         maxLength={4}
         value={pin}
         onChange={handleInputChange}
