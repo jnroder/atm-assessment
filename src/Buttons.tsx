@@ -1,7 +1,5 @@
 import Button from './Button'
 
-// TODO: Add button styles
-
 interface NavItem {
   text: string
   path: string

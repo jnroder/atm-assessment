@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { LoaderFunctionArgs, useLoaderData } from 'react-router'
+import { LoaderFunctionArgs, useLoaderData, redirect } from 'react-router'
 import { useLayoutContext } from '../App'
 import { userAccount } from '../api/userAccount'
 
@@ -9,11 +9,11 @@ type UserLoaderFunctionArgs = {
 
 export async function loader({ params }: UserLoaderFunctionArgs) {
   if (!params.pin) {
-    throw new Error('Pin not provided')
+    redirect('/pin')
   }
   const user = await userAccount.get(params.pin)
   if (!user) {
-    throw new Error('User not found')
+    throw new Response('User not found', { status: 404 })
   }
   return { user }
 }

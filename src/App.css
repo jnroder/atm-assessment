@@ -91,3 +91,10 @@ body {
 .button:nth-child(2n) {
   flex-direction: row-reverse;
 }
+
+/* Hide number input arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
+  margin: 0;
+}

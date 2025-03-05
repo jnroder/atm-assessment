@@ -1,0 +1,52 @@
+{
+  "users": {
+    "1111": {
+      "pin": "1111",
+      "name": "Hal 9000",
+      "balance": 9000,
+      "cardType": "plus"
+    },
+    "1123": {
+      "pin": "1123",
+      "name": "Leonardo Pisano Bigollo",
+      "balance": 1170,
+      "cardType": "pulse"
+    },
+    "1234": {
+      "pin": "1234",
+      "name": "John Doe",
+      "balance": 1400,
+      "cardType": "maestro"
+    },
+    "2001": {
+      "pin": "2001",
+      "name": "David Bowman",
+      "balance": 1968,
+      "cardType": "visa"
+    },
+    "2222": {
+      "pin": "2222",
+      "name": "Frank Poole",
+      "balance": 2001,
+      "cardType": "visa"
+    },
+    "4321": {
+      "pin": "4321",
+      "name": "Jane Doe",
+      "balance": 1055,
+      "cardType": "mastercard"
+    },
+    "0000": {
+      "pin": "0000",
+      "name": "Nolan Voyde",
+      "balance": 0,
+      "cardType": "star"
+    },
+    "0427": {
+      "pin": "0427",
+      "name": "Peter Parker",
+      "balance": 1962,
+      "cardType": "star"
+    }
+  }
+}

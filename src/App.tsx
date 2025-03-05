@@ -16,7 +16,10 @@ import UserDashboard, { loader as userLoader } from './pages/UserDashboard'
 import Balance from './pages/Balance'
 import Deposit from './pages/Deposit'
 import Withdraw from './pages/Withdraw'
+import SimpleMessage from './pages/SimpleMessage'
+import ErrorPage from './pages/ErrorPage'
 import './App.css'
+import stickerGrafittiImage from './assets/sticker_graf.png'
 
 interface NavItem {
   text: string
@@ -47,17 +50,22 @@ function Layout() {
   return (
     <div className="inline-block mt-47 mx-auto w-full max-w-[856px]">
       <Sign />
-      <div className="facade max-w-[760px] h-[1700px] mx-auto bg-white border-t-16 border-[#BEBEBE]">
+      <div className="max-w-[760px] h-[1700px] mx-auto bg-white border-t-16 border-[#BEBEBE]">
         <CardIndicator cardType={userData?.cardType} />
-        {/* pass button state setter to children. get with useLayoutContext */}
-        <div className="interface relative">
-          <div className="screen max-w-[476px] h-[456px] mt-3 mx-auto bg-[#7EB4D5] border-10 border-[#E1E1D6] box-content text-center">
+        <div className="relative">
+          <div className="max-w-[476px] h-[456px] mt-3 mx-auto bg-[#7EB4D5] border-10 border-[#E1E1D6] box-content text-center">
+            {/* pass state setters to children. get with useLayoutContext */}
             <Outlet
               context={{ navItems, setNavItems, userData, setUserData }}
             />
           </div>
           <Buttons navItems={navItems} />
         </div>
+        <img
+          src={stickerGrafittiImage}
+          alt="sticker grafitti"
+          className="relative w-80 top-[-37px] left-[39px]"
+        />
       </div>
     </div>
   )
@@ -77,10 +85,12 @@ const router = createBrowserRouter(
         path="/dashboard/:pin" // use a route parameter to pass pin to loader. get with useLocation
         element={<UserDashboard />}
         loader={userLoader}
+        errorElement={<ErrorPage />}
       />
       <Route path="/balance" element={<Balance />} />
       <Route path="/deposit" element={<Deposit />} />
       <Route path="/withdraw" element={<Withdraw />} />
+      <Route path="/success" element={<SimpleMessage />} />
     </Route>
   )
 )

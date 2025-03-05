@@ -4,11 +4,10 @@ import { useLayoutContext } from '../App'
 const Welcome = () => {
   const { setNavItems, setUserData } = useLayoutContext()
 
-  setUserData(null)
-
   useEffect(() => {
     setNavItems([{ text: 'Enter PIN', path: '/pin' }])
-  }, [setNavItems])
+    setUserData(null)
+  }, [setNavItems, setUserData])
 
   return <p className="mt-14 text-3xl/[1.875rem]">Welcome to the ATM</p>
 }
